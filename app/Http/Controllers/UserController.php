@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use log;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use App\Models\User;
-use log;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\PagesController;
+
 class UserController extends Controller
 {
-    //
-    public function register()
-    {
-        return view('users.register');
-    }
+    
     public function store(Request $request)
     {
      $formFields= $request->validate([
@@ -32,9 +31,7 @@ class UserController extends Controller
        return redirect('/')->with('message','User Created and Logged in');
     }
 
-    public function login(){
-            return view('users.login');
-    }
+
     //user auth
     public function authenticate(Request $request)
     {
@@ -47,7 +44,17 @@ class UserController extends Controller
 
         if (auth()->attempt($formFields)) {
             $request->session()->regenerate();
-            return redirect('/')->with('message','You Are Now Logged In');
+            if (Auth::id())
+            {
+                 if(Auth::user()->usertype=='0')
+                 {
+                    return redirect('Dashboard');
+                 }
+                 else{
+                    return redirect('admin/index');
+                 }
+           }
+          //  return redirect('/')->with('message','You Are Now Logged In');
             }
             return back()->withErrors(['error'=>'Invalid Credentials']);
 

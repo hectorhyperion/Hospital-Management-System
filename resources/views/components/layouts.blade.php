@@ -1,43 +1,42 @@
- <!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Hospital-Management-System</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Modern Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
- <!-- Bootstrap Core CSS -->
-<link href="{{url('assets/css/bootstrap.min.css')}}" rel='stylesheet' type='text/css' />
-<!-- Custom CSS -->
-<link href="{{url('assets/css/style.css')}}" rel='stylesheet' type='text/css' />
-<!-- Graph CSS -->
-<link href="{{url('assets/css/lines.css')}}" rel='stylesheet' type='text/css' />
-<link href="{{url('assets/css/font-awesome.css')}}" rel="stylesheet"> 
-<!-- jQuery -->
-<script src="{{url('assets/js/jquery.min.js')}}"></script>
-<!----webfonts--->
-<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
-<!---//webfonts--->  
-<!-- Nav CSS -->
-<link href="{{url('assets/css/custom.css')}}" rel="stylesheet">
-<!-- Metis Menu Plugin JavaScript -->
-<script src="{{url('assets/js/metisMenu.min.js')}}"></script>
-<script src="{{url('assets/js/custom.js')}}"></script>
-<!-- Graph JavaScript -->
-<script src="{{url('assets/js/d3.v3.js')}}"></script>
-<script src="{{url('assets/js/rickshaw.js')}}"></script>
+    <meta charset="utf-8">
+    <title>{{config('app.name')}}</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="{{url('assets/img/favicon.ico')}}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">  
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{{url('assets/css/bootstrap.min.css')}}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{{url('assets/css/styles.css')}}" rel="stylesheet">
 </head>
+
 <body>
-    <div id="wrapper">
     @include('inc.nav')
-
+    @include('inc._hero')
+    @include('inc._appointment')
+@include('inc._pricing')
+    @include('inc._doctors')
+    @include('inc._search')
+@include('inc._blog')
         {{$slot}}
-
-    </div>
-  
-<script src="{{url('assets/js/bootstrap.min.js')}}"></script>
-
- 
-</body>
-</html>
+@include('inc._footer')
+   

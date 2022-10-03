@@ -1,102 +1,140 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title> {{config('app.name','Hospital-Management-System')}} </title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Modern Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
- <!-- Bootstrap Core CSS -->
-<link href="{{url('assets/css/bootstrap.min.css')}}" rel='stylesheet' type='text/css' />
-<!-- Custom CSS -->
-<link href="{{url('assets/css/style.css')}}" rel='stylesheet' type='text/css' />
-<!-- Graph CSS -->
-<link href="{{url('assets/css/lines.css')}}" rel='stylesheet' type='text/css' />
-<link href="{{url('assets/css/font-awesome.css')}}" rel="stylesheet"> 
-<!-- jQuery -->
-<script src="{{url('assets/js/jquery.min.js')}}"></script>
-<!----webfonts--->
-<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
-<!---//webfonts--->  
-<!-- Nav CSS -->
-<link href="{{url('assets/css/custom.css')}}" rel="stylesheet">
-<!-- Metis Menu Plugin JavaScript -->
-<script src="{{url('assets/js/metisMenu.min.js')}}"></script>
-<script src="{{url('assets/js/custom.js')}}"></script>
-<!-- Graph JavaScript -->
-<script src="{{url('assets/js/d3.v3.js')}}"></script>
-<script src="{{url('assets/js/rickshaw.js')}}"></script>
+    <meta charset="utf-8">
+    <title>{{config('app.name')}}</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="{{url('admin/img/favicon.ico')}}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet"> 
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{{url('admin/css/bootstrap.min.css')}}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{{url('admin/css/style.css')}}" rel="stylesheet">
 </head>
 
-<body id="login">
-  <div class="login-logo">
-    <a href="/"><img src="{{url('assets/images/logo.png')}}" alt=""/></a>
-  </div>
-  <h2 class="form-heading">Register</h2>
-  <form class="form-signin app-cam" action="/users" method="POST">
-    @csrf
-   
-      <p>Enter your personal details below</p>
-      <div>
-        <input type="text" class="form-control1" name="name" placeholder="Full Name" value="{{old('name')}}" autofocus="">
-   
-      @error('name')
-      <p class="alert alert-danger">              {{$message}} </p>
- @enderror
+<body>
+   <div class="container-fluid position-relative d-flex p-0">
+      <!-- Spinner Start -->
+      <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+          <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+              <span class="sr-only">Loading...</span>
+          </div>
       </div>
-      <div>
-          <input type="text" class="form-control1" name="address" placeholder="Address"  value="{{old('address')}}" autofocus="">
-      @error('address')
-      <p class="alert alert-danger">
-                     {{$message}}
-                  </p>
-  @enderror
-      </div>
-      
-      <div>
-         <input type="text" class="form-control1" name="email" placeholder="Email"  value="{{old('email')}}" autofocus="">
-      @error('email')
-      <p class="alert alert-danger">
-                     {{$message}}
-                  </p>
-  @enderror
-        </div>    
-     <div>
-        <input type="text" class="form-control1" name="phone" placeholder="Phone"  value="{{old('phone')}}" autofocus="">
-      @error('phone')
-      <p class="alert alert-danger">
-                     {{$message}}
-                  </p>
-  @enderror
-     </div>
-    <div>
-        <input type="password" class="form-control1" name="password" placeholder="Password">
-      @error('password')
-      <p class="alert alert-danger">
-                     {{$message}} </p>
-  @enderror
-    </div>
-     
-    <div>
-       <input type="password" class="form-control1" name="password_confirmation" placeholder="Re-type Password">
-      @error('password_confirmation')
-      <p class="text-red-500 text-xs mt-1">
-                     {{$message}}
-                  </p>
-  @enderror
-    </div>
-     
-      <button class="btn btn-lg btn-success1 btn-block" type="submit">Submit</button>
-      <div class="registration">
-          Already Registered.
-          <a class="" href="/login">
-              Login
-          </a>
-      </div>
-  </form>
-   <div class="copy_layout login register">
-      <p>Copyright &copy;  All Rights Reserved |<a href="" target="_blank"></a> </p>
+      <!-- Spinner End -->
+  
+    
    </div>
+
+<form class="form-signin app-cam" action="/users" method="POST">
+   @csrf
+
+<div class="container-fluid">
+   <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
+       <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+           <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
+               <div class="d-flex align-items-center justify-content-between mb-3">
+                   <a href="/" class="">
+                       <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>BIOMETRICS</h3>
+                   </a>
+                   <h3>Sign Up</h3>
+               </div>
+               <div class="form-floating mb-3">
+                   <input type="text" class="form-control" id="floatingText" name="name" value="{{old('name')}}" placeholder="jhondoe">
+                   <label for="floatingText">Fullname</label>
+                   @error('name')
+                   <p class="text-danger">
+                                  {{$message}}
+                               </p>
+                    @enderror
+               </div>
+               <div class="form-floating mb-3">
+                   <input type="email" class="form-control" id="floatingInput" name="email" value="{{old('email')}}" placeholder="name@example.com">
+                   <label for="floatingInput">Email address</label>
+                   @error('email')
+                   <p class="text-danger">
+                                  {{$message}}
+                               </p>
+                    @enderror
+               </div>
+               <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="floatingInput" name="address" value="{{old('address')}}" placeholder="127 Boston">
+                  <label for="floatingInput">Address</label>
+                  @error('address')
+                  <p class="text-danger">
+                                 {{$message}}
+                              </p>
+                   @enderror
+              </div>
+              <div class="form-floating mb-3">
+               <input type="text" class="form-control" id="floatingInput" name="phone" value="{{old('phone')}}" placeholder="name@example.com">
+               <label for="floatingInput">Phone</label>
+               @error('phone')
+               <p class="text-danger">
+                              {{$message}}
+                           </p>
+                @enderror
+           </div>
+
+               <div class="form-floating mb-4">
+                   <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
+                   <label for="floatingPassword">Password</label>
+                   @error('password')
+                  <p class="text-danger">
+                                 {{$message}}
+                              </p>
+                   @enderror
+               </div>
+               <div class="form-floating mb-4">
+                  <input type="password" class="form-control" id="floatingPassword" name="password_confirmation" placeholder="Password">
+                  <label for="floatingPassword">Confirm Password</label>
+                  @error('password_confirmation')
+                 <p class="text-red-500 text-xs mt-1">
+                                {{$message}}
+                             </p>
+                  @enderror
+              </div>
+               <div class="d-flex align-items-center justify-content-between mb-4"> 
+               <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Sign Up</button>
+               <p class="text-center mb-0">Already have an Account? <a href="/login">Sign In</a></p>
+           </div>
+       </div>
+   </div>
+</div>
+</form>
+<!-- Sign Up End -->
+</div>
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="lib/chart/chart.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/waypoints/waypoints.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="lib/tempusdominus/js/moment.min.js"></script>
+<script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+<script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+<!-- Template Javascript -->
+<script src="{{url('admin/js/main.js')}}"></script>
 </body>
+
 </html>

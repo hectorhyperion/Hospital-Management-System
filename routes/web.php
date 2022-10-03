@@ -1,8 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Index;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PagesController;
 
 
 /*
@@ -16,15 +18,23 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', [Index::class, 'index'])->middleware('auth');
+Route::get('/', [Index::class, 'index']);
+//client view
+Route::get('/Dashboard', [PagesController::class, 'Dashboard'])->middleware('auth');
+//admin view 
+Route::get('/admin/index', [PagesController::class , 'adminIndex'])->middleware('auth');
 //show register view
-Route::get('register', [UserController::class , 'register']);
+Route::get('register', [PagesController::class , 'register'])->middleware('guest');
 //create New User
 Route::post('/users',[UserController::class, 'store']);
 //show login view
-Route::get('/login', [UserController::class , 'login'])->name('login');
+Route::get('/login', [PagesController::class , 'login'])->name('login')->middleware('guest');
 
 //logout
-Route::post('/logout',[UserController::class, 'logout'])->middleware('auth');
+Route::post('/logout',[UserController::class, 'logout'])->middleware('auth')->name('logout');
 //login function
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+//show add doctors pages
+Route::get('/admin/addDoctor', [PagesController::class , 'addDoctor'])->middleware('auth');
+//add Doctors
+Route::post('/addDoctor',[ AdminController::class , 'store'])->middleware('auth');
