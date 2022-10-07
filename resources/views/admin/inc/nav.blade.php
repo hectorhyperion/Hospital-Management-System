@@ -38,7 +38,7 @@
 
 <a href="/adminAppointmentView" class="nav-item nav-link"><i class="fa fa-calendar-check me-2"></i>Appointment</a>
 
-<a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
+<a href="/allDoctors" class="nav-item nav-link"><i class="fa fa-user me-2"></i>All Doctors</a>
 <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
 <div class="nav-item dropdown">
 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>

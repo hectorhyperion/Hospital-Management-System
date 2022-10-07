@@ -40,13 +40,21 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 Route::get('/admin/addDoctor', [PagesController::class , 'addDoctor'])->middleware('auth');
 //add Doctors
 Route::post('/addDoctor',[ AdminController::class , 'store'])->middleware('auth');
+//show all doctors form databse
+Route::get('/allDoctors', [AdminController::class, 'allDoctors'])->middleware('auth');
+//editing doctor data
+Route::get('/editDoctor/{id}',[PagesController::class, 'editDoctor'])->middleware('auth');
+//updating docotor's data
+Route::post('updateDoctors/{id}',[AdminController::class,'updateDoctors'])->middleware('auth');
+//deleting doctor data
+Route::delete('/deleteDoctor/{id}',[AdminController::class,'deleteDoctor'])->middleware('auth');
 //view appointment
 Route::get('/viewAppointment',[HomeController::class, 'viewAppointment'])->middleware('auth');
 //cancel appointments
 Route::get('/cancelAppointment/{id}',[HomeController::class, 'cancelAppointment'])->middleware('auth');
 //admin view appointments
-Route::get('/adminAppointmentView',[AdminController::class, 'adminAppointmentView']);
+Route::get('/adminAppointmentView',[AdminController::class, 'adminAppointmentView'])->middleware('auth');
 //approve appointments
-Route::get('/approved/{id}',[AdminController::class, 'approved']);
+Route::get('/approved/{id}',[AdminController::class, 'approved'])->middleware('auth');
 //cancle appointments
-Route::get('/cancelled/{id}',[AdminController::class, 'cancelled']);
+Route::get('/cancelled/{id}',[AdminController::class, 'cancelled'])->middleware('auth');

@@ -36,6 +36,10 @@ public function addDoctor()
 {
     return view('admin.addDoctor');
 }
-
+//edit doctor view
+public function editDoctor(Doctor $id)
+{
+    return view('admin.editDoctor',$id);
+}
 
 }
