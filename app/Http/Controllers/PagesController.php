@@ -42,4 +42,8 @@ public function editDoctor(Doctor $id)
     return view('admin.editDoctor',$id);
 }
 
+public function speciality(){
+    return view('admin.speciality');
+}
+
 }

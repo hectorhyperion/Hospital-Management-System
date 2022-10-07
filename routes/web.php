@@ -42,6 +42,11 @@ Route::get('/admin/addDoctor', [PagesController::class , 'addDoctor'])->middlewa
 Route::post('/addDoctor',[ AdminController::class , 'store'])->middleware('auth');
 //show all doctors form databse
 Route::get('/allDoctors', [AdminController::class, 'allDoctors'])->middleware('auth');
+
+//show create speciality view
+Route::get('/speciality', [PagesController::class, 'speciality'])->middleware('auth');
+//store speciality 
+Route::Post('/storespeciality', [AdminController::class, 'storespeciality'])->middleware('auth');
 //editing doctor data
 Route::get('/editDoctor/{id}',[PagesController::class, 'editDoctor'])->middleware('auth');
 //updating docotor's data

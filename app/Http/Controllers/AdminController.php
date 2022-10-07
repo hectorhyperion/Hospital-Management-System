@@ -6,6 +6,7 @@ use App\Models\Appointment;
 use log;
 use App\Models\User;
 use App\Models\Doctor;
+use App\Models\Speciality;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -28,7 +29,7 @@ class AdminController extends Controller
 
                return redirect()->back()->with('message', 'Doctor Details Saved Successfully');
     }
-    
+
     //getting all doctors from data base
     public function allDoctors(){
         $data = Doctor::all();
@@ -57,6 +58,17 @@ class AdminController extends Controller
     {
         $data = Appointment::all();
        return view('admin.showAppointment',compact('data'));
+
+    }
+
+    //storeing speciality
+    public function storespeciality(Request $request){
+            $data = $request->validate([
+                'speciality'=> 'required|min:3'
+            ]);
+            DB::table('specialities')->insert($data);
+            return redirect()->back()->with('message',' Update Successful');
+
     }
     //approve appointments
     public function approved($id)
