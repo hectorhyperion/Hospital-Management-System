@@ -35,7 +35,7 @@
     <div class="container-fluid sticky-top bg-white shadow-sm">
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
-                <a href="index.html" class="navbar-brand">
+                <a href="/" class="navbar-brand">
                     <h1 class="m-0 text-uppercase text-primary"><i class="fa fa-clinic-medical me-2"></i>BIOmetrics</h1>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -43,7 +43,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
+                        <a href="/" class="nav-item nav-link active">Home</a>
                         <a href="about.html" class="nav-item nav-link">About</a>
                         <a href="service.html" class="nav-item nav-link">Service</a>
                         <a href="price.html" class="nav-item nav-link">Pricing</a>
@@ -59,6 +59,7 @@
                             </div>
                         </div>
                         @auth
+                        <a href="/viewAppointment" class="nav-item nav-link">Appointment</a>
                         <a href="" class="nav-item nav-link">
                         <form class="" method="POST" action="/logout">
                             @csrf
@@ -69,6 +70,7 @@
                         </a>
                            
                         @else
+
                         <a href="/login" class="nav-item nav-link">Login</a>
                         <a href="/register" class="nav-item nav-link">Register</a>
                         @endauth

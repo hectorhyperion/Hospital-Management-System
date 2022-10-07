@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Doctor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use log;
 
 class PagesController extends Controller
 {
@@ -21,14 +25,17 @@ public function adminIndex()
 {
     return view('admin.home');
 }
-
+//user view
 public function Dashboard()
 {
-  return view('users.dashboard');
+    $doctor = Doctor::all();
+  return view('users.dashboard',compact('doctor'));
 }
+//admin add doctor view
 public function addDoctor()
 {
     return view('admin.addDoctor');
 }
+
 
 }

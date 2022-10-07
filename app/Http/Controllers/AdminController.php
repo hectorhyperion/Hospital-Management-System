@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use log;
 use App\Models\User;
 use App\Models\Doctor;
@@ -23,8 +24,30 @@ class AdminController extends Controller
                  {
                     $formFields['image']=$request->file('image')->store('images', 'public');
                 }
-               DB::table('doctors')->insert($formFields);
+               DB::table('doctors')->save($formFields);
 
                return redirect()->back()->with('message', 'Doctor Details Saved Successfully');
+    }
+    //gwetting all appointments from database
+    public function adminAppointmentView()
+    {
+        $data = Appointment::all();
+       return view('admin.showAppointment',compact('data'));
+    }
+    //approve appointments
+    public function approved($id)
+    {
+        $data= Appointment::findorfail($id);
+        $data->status = 'approved';
+        $data->save();
+        return redirect()->back();
+    }
+    //cancel appointments
+    public function cancelled($id)
+    {
+        $data= Appointment::findorfail($id);
+        $data->status = 'cancelled';
+        $data->save();
+        return redirect()->back();
     }
 }
