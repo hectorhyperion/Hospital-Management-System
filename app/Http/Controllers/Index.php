@@ -17,7 +17,7 @@ class Index extends Controller
     {
         if(Auth::id())
         {
-            return redirect('admin/index');
+            return redirect()->back();
         }
        
         //getting doctors from databasbe
