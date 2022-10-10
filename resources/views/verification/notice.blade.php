@@ -41,7 +41,12 @@
             </div>
         @endif
 
-      <p style="color: antiquewhite">  Before proceeding, please check your email for a verification link. If you did not receive the email,</p> 
+      <p style="color: antiquewhite">  Before proceeding, please check your email for a verification link. If you did not receive the email,</p> <form class="" method="POST" action="/logout">
+        @csrf
+        <button class="btn btn-danger" type="submit">
+            Logout
+        </button>
+        </form>
         <form action="{{ route('verification.resend') }}" method="POST" class="d-inline">
             @csrf
             <button type="submit" class="d-inline btn btn-link p-0">

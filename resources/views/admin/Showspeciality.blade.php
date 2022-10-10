@@ -13,12 +13,10 @@
                 <tr class="table-light">
                     <th>S/N</th>
                     
-                    <th>Name</th>
-                    <th>Phone</th>
+                    
                     <th>Speciality</th>
-                    <th>Room NO</th>
-                  <th>EDIT</th>
-                  <th>DELETE</th>
+                   <th>Eidt</th>
+                   <th>Delete</th>
                 
                 </tr>
                 @foreach ($data as $doc)
@@ -26,12 +24,11 @@
               
                 <tr class="table-warning">
                       <td>{{$no++}}</td>
-                   <td>{{$doc->name}}</td>
-                     <td>{{$doc->phone}}</td>
+                  
                     <td>{{$doc->speciality}}</td>
-                    <td>{{$doc->room_no}}</td>
-                    <td ><a href="/editDoctor/{{$doc->id}}" class="btn btn-info"><i class="fa fa-pen"></i>Edit</a></td>
-                    <td onclick="return confirm('are you sure, you want to delete this?')"><form action="/deleteDoctor/{{$doc->id}}" method="POST">
+                   
+                    <td ><a href="/editspeciality/{{$doc->id}}" class="btn btn-info"><i class="fa fa-pen"></i>Edit</a></td>
+                    <td onclick="return confirm('are you sure, you want to delete this?')"><form action="/removepeciality/{{$doc->id}}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>

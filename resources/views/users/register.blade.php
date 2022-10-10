@@ -66,6 +66,16 @@
                     @enderror
                </div>
                <div class="form-floating mb-3">
+                <select class="form-select" id="floatingSelect"
+                    aria-label="Floating label select example" name="usertype">
+                    <option selected>Account type</option>
+                        @foreach ($users as $user)
+                        <option value="{{$user->name}}">{{$user->name}}</option>
+                    @endforeach
+                   </select>
+                <label for="floatingSelect">Works with selects</label>
+            </div>
+               <div class="form-floating mb-3">
                    <input type="email" class="form-control" id="floatingInput" name="email" value="{{old('email')}}" placeholder="name@example.com">
                    <label for="floatingInput">Email address</label>
                    @error('email')

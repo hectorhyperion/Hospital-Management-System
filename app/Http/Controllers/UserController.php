@@ -9,15 +9,17 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
 use App\Http\Controllers\PagesController;
+use App\Models\Usertypes;
 
 class UserController extends Controller
 {
-    
+    //submit registration
     public function store(Request $request)
     {
      $formFields= $request->validate([
             'name' => 'required|min:3',
             'address'=>'required',
+            'usertype'=>'required',
             'email' =>['required', 'email', Rule::unique('users','email')],
             'phone' => 'required|min:7|max:11',
             'password' => 'required|confirmed|min:6|max:16'
@@ -25,6 +27,7 @@ class UserController extends Controller
       
        //hash Password
        $formFields['password'] =bcrypt($formFields['password']);
+       $formFields['usertype']= $request->usertype;
        $user = User::create($formFields);
 
        //login
@@ -67,12 +70,12 @@ public function register(RegisterRequest $request)
             $request->session()->regenerate();
             if (Auth::id())
             {
-                 if(Auth::user()->usertype=='0')
+                 if(Auth::user()->usertype=='1')
                  {
-                    return redirect('Dashboard');
+                    return redirect('admin/index');
                  }
                  else{
-                    return redirect('admin/index');
+                    return redirect('Dashboard');
                  }
            }
           //  return redirect('/')->with('message','You Are Now Logged In');

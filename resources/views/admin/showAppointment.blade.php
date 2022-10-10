@@ -21,7 +21,7 @@
                     
               
                 <tr class="table-warning">
-                      <td></td>
+                      <td>{{$no++}}</td>
                    <td>{{$appointment->name}}</td>
                      <td>{{$appointment->email}}</td>
                     <td>{{$appointment->phone}}</td>

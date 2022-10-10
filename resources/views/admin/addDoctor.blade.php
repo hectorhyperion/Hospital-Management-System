@@ -55,9 +55,10 @@
                 <select class="form-select" id="floatingSelect"
                     aria-label="Floating label select example" name="speciality">
                     <option selected>---Select</option>
-                    <option value="Opitian">Opitian</option>
-                    <option value="Surgeon">Surgeon</option>
-                    <option value="Physotherapist">Physotherapist</option>
+                     @foreach ($data as $doc)
+                          <option value="{{$doc->speciality}}">{{$doc->speciality}}</option>
+                     @endforeach
+                   
                 </select>
                 <label for="floatingSelect">speciality</label>
                 @error('speciality')

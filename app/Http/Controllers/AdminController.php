@@ -9,7 +9,6 @@ use App\Models\Doctor;
 use App\Models\Speciality;
 use App\Notifications\SendEmailNotification;
 use Illuminate\Http\Request;
-//use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\DB;
 use Notification;
 
@@ -36,7 +35,7 @@ class AdminController extends Controller
     //getting all doctors from data base
     public function allDoctors(){
         $data = Doctor::all();
-        return view('admin.doctors', compact('data'));
+        return view('admin.doctors', compact('data'))->with('no',1);
     }
     //updating doctors data
     public function updateDoctors(Doctor $id, Request $request)
@@ -60,7 +59,7 @@ class AdminController extends Controller
     public function adminAppointmentView()
     {
         $data = Appointment::all();
-       return view('admin.showAppointment',compact('data'));
+       return view('admin.showAppointment',compact('data'))->with('no',1);
 
     }
 
@@ -72,6 +71,23 @@ class AdminController extends Controller
             DB::table('specialities')->insert($data);
             return redirect()->back()->with('message',' Update Successful');
 
+    }
+    //updating speciality
+    public function updatespeciality(Request $request, Speciality $id)
+    {
+        $data = $request->validate([
+            'speciality'=> 'required|min:3'
+        ]);
+
+        $id->update($data);
+       
+        return redirect()->back()->with('message', 'Appointment Reschedule successfully');
+    }
+    //deleting speciality
+    public function removepeciality(Speciality $id)
+    {
+        $id->delete();
+        return back()->with('error', 'Speciality Deleted Sucessfully');
     }
     //approve appointments
     public function approved($id)

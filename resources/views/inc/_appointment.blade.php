@@ -14,10 +14,10 @@
 <div class="col-lg-6">
 <div class="bg-white text-center rounded p-5">
 <h1 class="mb-4">Book An Appointment</h1>
-@if (session()->has('message'))
+@if (session()->has('appointment'))
 <div class="alert alert-success">
     
-    {{session()->get('message')}}
+    {{session()->get('appointment')}}
    
 </div>
 @endif
