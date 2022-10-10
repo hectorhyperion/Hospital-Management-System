@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Index;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\VerificationController;
 
 
 /*
@@ -63,3 +64,23 @@ Route::get('/adminAppointmentView',[AdminController::class, 'adminAppointmentVie
 Route::get('/approved/{id}',[AdminController::class, 'approved'])->middleware('auth');
 //cancle appointments
 Route::get('/cancelled/{id}',[AdminController::class, 'cancelled'])->middleware('auth');
+
+//verfication
+Route::group(['middleware'=>['auth']],function(){
+/**
+ * verfication Routes
+ */
+Route::get('/email/verify',[VerificationController::class,'show'])->name('verification.notice');
+Route::get('/emai/verify/{id}/{hash}', [VerificationController::class,'verify'])->name('verification.verify')->middleware(['signed']);
+Route::post('/email/resend',[VerificationController::class, 'resend'])->name('verification.resend');
+});
+//only authenticated can access this group
+Route::group(['middleware' => ['auth']], function() {
+    //only verified account can access with this group
+    Route::group(['middleware' => ['verified']], function() {
+            /**
+             * Dashboard Routes
+             */
+            Route::get('/dashboard', [PagesController::class, 'dashboard'])->name('users.dashboard');
+    });
+});

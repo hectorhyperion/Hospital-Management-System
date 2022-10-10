@@ -15,7 +15,7 @@ class Index extends Controller
     //
     public function index()
     {
-        if(Auth::id(2))
+        if(Auth::id())
         {
             return redirect('admin/index');
         }

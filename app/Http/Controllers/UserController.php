@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Registered;
 use App\Http\Controllers\PagesController;
 
 class UserController extends Controller
@@ -28,9 +29,29 @@ class UserController extends Controller
 
        //login
        auth()->login($user);
-       return redirect('/')->with('message','User Created and Logged in');
+       if (auth()->id('usertype') ==1 )
+        {
+          return redirect('/admin/index')->with('message','User Created and Logged in');
+       }
+       return redirect('/dashboard')->with('message','User Created and Logged in');
     }
+/**
+* Handle account registration request
+* 
+* @param RegisterRequest $request
+* 
+* @return \Illuminate\Http\Response
+*/
+public function register(RegisterRequest $request) 
+{
+   $user = User::create($request->validated());
 
+   event(new Registered($user));
+
+   auth()->login($user);
+
+   return redirect('/')->with('success', "Account successfully registered.");
+}
 
     //user auth
     public function authenticate(Request $request)

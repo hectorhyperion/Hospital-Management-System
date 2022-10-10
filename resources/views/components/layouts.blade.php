@@ -8,7 +8,7 @@
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="{{url('assets/img/favicon.ico')}}" rel="icon">
+    <link rel="icon" href="{{ url('assets/logo.png') }}">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">

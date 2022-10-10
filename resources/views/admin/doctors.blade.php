@@ -1,5 +1,5 @@
 <x-adminLayout>
-    <div class="container-fluid pt-4 px-4 ">
+    <div class="container-fluid  pt-4 px-4 ">
     <div class="col-12">
         <div class=" rounded h-100 p-4">
             @if (session()->has('error'))
@@ -30,8 +30,8 @@
                      <td>{{$doc->phone}}</td>
                     <td>{{$doc->speciality}}</td>
                     <td>{{$doc->room_no}}</td>
-                    <td><a href="/editDoctor/{{$doc->id}}" class="btn btn-info"><i class="fa fa-pen"></i>Edit</a></td>
-                    <td><form action="/deleteDoctor/{{$doc->id}}" method="POST">
+                    <td ><a href="/editDoctor/{{$doc->id}}" class="btn btn-info"><i class="fa fa-pen"></i>Edit</a></td>
+                    <td onclick="return confirm('are you sure, you want to delete this?')"><form action="/deleteDoctor/{{$doc->id}}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>

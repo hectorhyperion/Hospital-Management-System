@@ -61,7 +61,7 @@ class AdminController extends Controller
 
     }
 
-    //storeing speciality
+    //storing speciality
     public function storespeciality(Request $request){
             $data = $request->validate([
                 'speciality'=> 'required|min:3'
