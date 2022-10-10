@@ -15,7 +15,7 @@
                    <th>Status</th>
                   <th>Approved</th>
                   <th>canceled</th>
-                
+                  <th>Send Mail</th>
                 </tr>
                 @foreach ($data as $appointment)
                     
@@ -31,7 +31,8 @@
                     <td>{{$appointment->status}}</td>
                     <td><a href="/approved/{{$appointment->id}}" class="btn btn-success">Approved</a></td>
                     <td><a href="/cancelled/{{$appointment->id}}" class="btn btn-danger">Cancelled</a></td>
-                  
+
+                    <td><a href="/mailView/{{$appointment->id}}"  class="btn btn-info">Send Mail</a></td>
                 </tr>
               
                   @endforeach 

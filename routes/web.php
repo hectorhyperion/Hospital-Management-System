@@ -64,6 +64,10 @@ Route::get('/adminAppointmentView',[AdminController::class, 'adminAppointmentVie
 Route::get('/approved/{id}',[AdminController::class, 'approved'])->middleware('auth');
 //cancle appointments
 Route::get('/cancelled/{id}',[AdminController::class, 'cancelled'])->middleware('auth');
+//send mail for appointments
+Route::get('/mailView/{id}',[AdminController::class, 'mailView'])->middleware('auth');
+//send email
+Route::post('/sendmail/{id}',[AdminController::class, 'sendmail'])->middleware('auth');
 
 //verfication
 Route::group(['middleware'=>['auth']],function(){

@@ -7,8 +7,11 @@ use log;
 use App\Models\User;
 use App\Models\Doctor;
 use App\Models\Speciality;
+use App\Notifications\SendEmailNotification;
 use Illuminate\Http\Request;
+//use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\DB;
+use Notification;
 
 class AdminController extends Controller
 {
@@ -85,5 +88,26 @@ class AdminController extends Controller
         $data->status = 'cancelled';
         $data->save();
         return redirect()->back();
+    }
+    //send appointment mail
+    public function mailView($id)
+    {
+        $data = Appointment::find($id);
+        return view('admin.email_view',compact('data'));
+    }
+    //sending email
+    public function sendmail(Request $request,$id)
+    {
+        $data= Appointment::find($id);
+        $details= $request->validate([
+            'greeting'=>'required',
+            'body'=>'required',
+            'actiontext'=>'required',
+            'actionurl'=>'required',
+            'endpart' =>'required'
+            ]);
+            Notification::Send($data, new SendEmailNotification($details));
+
+            return redirect()->back()->with('message','Email Sent Sucessfully');
     }
 }
