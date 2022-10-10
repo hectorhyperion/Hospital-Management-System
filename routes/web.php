@@ -48,6 +48,14 @@ Route::get('/allDoctors', [AdminController::class, 'allDoctors'])->middleware('a
 Route::get('/speciality', [PagesController::class, 'speciality'])->middleware('auth');
 //store speciality 
 Route::Post('/storespeciality', [AdminController::class, 'storespeciality'])->middleware('auth');
+//list speciality
+Route::get('/Showspeciality',[PagesController::class,'Showspeciality'])->middleware('auth');
+//editspeciality
+Route::get('/editspeciality/{id}',[PagesController::class,'editspeciality'])->middleware('auth');
+//update speciality
+Route::post('/updatespeciality/{id}',[AdminController::class,'updatespeciality'])->middleware('auth');
+Route::delete('/removepeciality/{id}',[AdminController::class,'removepeciality'])->middleware('auth');
+
 //editing doctor data
 Route::get('/editDoctor/{id}',[PagesController::class, 'editDoctor'])->middleware('auth');
 //updating docotor's data
@@ -64,6 +72,10 @@ Route::get('/adminAppointmentView',[AdminController::class, 'adminAppointmentVie
 Route::get('/approved/{id}',[AdminController::class, 'approved'])->middleware('auth');
 //cancle appointments
 Route::get('/cancelled/{id}',[AdminController::class, 'cancelled'])->middleware('auth');
+//reschedule appointment
+Route::get('/reschedule/{id}',[PagesController::class, 'reschedule'])->middleware('auth');
+
+Route::post('/appointmentReschedule/{id}',[HomeController::class,'appointmentReschedule'])->middleware('auth');
 //send mail for appointments
 Route::get('/mailView/{id}',[AdminController::class, 'mailView'])->middleware('auth');
 //send email
@@ -88,3 +100,6 @@ Route::group(['middleware' => ['auth']], function() {
             Route::get('/dashboard', [PagesController::class, 'dashboard'])->name('users.dashboard');
     });
 });
+//about us
+Route::get('/about', [PagesController::class, 'about']);
+Route::get('/doctor',[PagesController::class,'doctor']);

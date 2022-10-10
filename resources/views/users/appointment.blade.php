@@ -6,6 +6,13 @@
        
     </div>
     @endif
+    @if (session()->has('error'))
+    <div class="alert alert-success">
+        
+        {{session()->get('error')}}
+       
+    </div>
+    @endif
 <h1>' MY APPOINTMENTS</h1>
     <table class="table table-primary table-striped table-hover">
         <tr class="table-warning">
@@ -16,13 +23,14 @@
             <th>Email</th>
             <th>Phone</th>
             <th>Status</th>
+            <th>Reschedule</th>
             <th>Cancle Appointment</th>
         </tr>
         @foreach ($appointment as $appointment)
             
       
         <tr class="table-info">
-                         <td></td>
+                         <td>{{$no++}}</td>
           
             
             <td>{{$appointment->doctor}}</td>
@@ -31,9 +39,12 @@
             <td>{{$appointment->email}}</td>
             <td>{{$appointment->phone}}</td>
             <td>{{$appointment->status}}</td>
-            
+            <td><a href="/reschedule/{{$appointment->id}}" class="btn btn-info">Change Appointment time</a></td>
             <td><a href="/cancelAppointment/{{$appointment->id}}" onclick="return confirm('are you sure you want to cancel your Appointment?')" class="btn btn-danger">Cancel</a></td>
+
+            
         </tr>
+
       
           @endforeach 
     </table>

@@ -9,7 +9,7 @@ use App\Models\Appointment;
 
 class HomeController extends Controller
 {
-    //
+    //book an appintment
     public function appointment(Request $request)
     {
        $formFields = new Appointment;
@@ -32,7 +32,7 @@ class HomeController extends Controller
           $formFields['user_id'] = auth()->id();
          $formFields['status'] = $status;
        DB::table('appointments')->insert($formFields);
-        return redirect()->back()->with('message', 'Appointment Booked successfully');
+        return redirect()->back()->with('appointment', 'Appointment Booked successfully');
 
     }
     //show appointment view
@@ -40,14 +40,26 @@ public function viewAppointment()
 {
     $userid= Auth::user()->id;
     $appointment = Appointment::where('user_id',$userid)->get();
-    return view('users.appointment',compact('appointment'));
+    return view('users.appointment',compact('appointment'))->with('no',1);
 
 }
 public function cancelAppointment($id)
 {
     $data = Appointment::find($id);
     $data->delete();
-    return redirect()->back()->with('message', 'Appointment Cancel Sucessfully');
+    return redirect()->back()->with('message', 'Appointment Cancel Successfully');
+}
+///appointmentReschedule
+public function appointmentReschedule( Appointment $id, Request $request)
+{
+    $formFields = $request->validate([
+        'time'=>'required',
+            'date'=>'required',
+            
+   ]);
+   $id->update($formFields);
+       
+        return redirect('/viewAppointment')->with('error', 'Appointment Reschedule successfully');
 }
 }
 
