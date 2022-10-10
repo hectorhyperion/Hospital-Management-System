@@ -46,12 +46,13 @@ public function adminIndex()
 //user view
 public function Dashboard()
 {
-    if (Auth::user()->usertype >! '1') 
+    if (Auth::user()->usertype == '1') 
     {
         return back()->with('error', 'UNAUTHORIZE ACCESS');
     }
     $doctor = Doctor::all();
-  return view('users.dashboard',compact('doctor'));
+    return view('users.dashboard',compact('doctor'));
+    
 }
 //admin add doctor view
 public function addDoctor()
