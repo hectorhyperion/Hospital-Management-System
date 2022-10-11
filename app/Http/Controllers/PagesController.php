@@ -46,5 +46,11 @@ public function editDoctor(Doctor $id)
 public function speciality(){
     return view('admin.speciality');
 }
-
+    public function about(){
+        return view('about');
+    }
+    public function doctor(){
+      $doctors =  Doctor::all();
+        return view('users.doctor',compact('doctors'));
+    }
 }

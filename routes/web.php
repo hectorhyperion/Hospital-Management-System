@@ -22,6 +22,9 @@ use App\Http\Controllers\VerificationController;
 
 Route::get('/', [Index::class, 'index']);
 //client view
+//about us
+Route::get('/about', [PagesController::class, 'about']);
+Route::get('/doctor',[PagesController::class,'doctor']);
 Route::get('/Dashboard', [PagesController::class, 'Dashboard'])->middleware('auth');
 //admin view 
 Route::get('/admin/index', [PagesController::class , 'adminIndex'])->middleware('auth');
@@ -100,6 +103,3 @@ Route::group(['middleware' => ['auth']], function() {
             Route::get('/dashboard', [PagesController::class, 'dashboard'])->name('users.dashboard');
     });
 });
-//about us
-Route::get('/about', [PagesController::class, 'about']);
-Route::get('/doctor',[PagesController::class,'doctor']);

@@ -44,16 +44,13 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto py-0">
             @auth
-            <a href="/dashboard" class="nav-item nav-link active">Home</a>
-            <a href="/about" class="nav-item nav-link">About</a>
+            <a href="/dashboard" class="nav-item nav-link active">Home <span class="sr-only">(current)</span></a>
+            <a href="/about" class="nav-item nav-link"  >About</a>
             <a href="/doctor" class="nav-item nav-link">Doctors</a>
-          
             @else
-            <a href="/" class="nav-item nav-link active">Home</a>
+            <a href="/" class="nav-item nav-link ">Home</a>
             <a href="/about" class="nav-item nav-link">About</a>
             <a href="/doctor" class="nav-item nav-link">Doctors</a>
-           
-           
             @endauth
             @auth
             <a href="/viewAppointment" class="nav-item nav-link">Appointment</a>
