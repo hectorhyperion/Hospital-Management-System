@@ -56,7 +56,7 @@ public function register(RegisterRequest $request)
    return redirect('/')->with('success', "Account successfully registered.");
 }
 
-    //user auth
+    //user auth login
     public function authenticate(Request $request)
     {
        
